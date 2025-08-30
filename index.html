@@ -9,70 +9,45 @@
 <body>
   <div class="container">
     <h1>Downloads</h1>
+
     <div class="tabs">
-      <button class="tab-btn active" onclick="openTab(event, 'wallpapers')">Wallpapers</button>
-      <button class="tab-btn" onclick="openTab(event, 'capes')">Capes</button>
+      <button class="tab-button active" onclick="openTab('wallpapers')">Wallpapers</button>
+      <button class="tab-button" onclick="openTab('capes')">Capes</button>
     </div>
 
     <!-- Wallpapers Tab -->
     <div id="wallpapers" class="tab-content active">
       <h2>Wallpapers</h2>
-      <div id="wallpapers-list" class="grid"></div>
-      <div id="wallpaper-upload" class="upload-box" style="display: none;">
-        <input type="file" id="uploadWallpaper" accept="image/*" onchange="uploadFile(event, 'wallpapers')">
+      <div class="grid" id="wallpaperGrid">
+        <!-- Example wallpaper -->
+        <div class="item">
+          <img src="wallpapers/night-wallpaper-with-shaders.png" alt="Wallpaper">
+          <a href="wallpapers/night-wallpaper-with-shaders.png" download>Download</a>
+        </div>
+      </div>
+      <div id="wallpaperUpload" class="upload-section hidden">
+        <input type="file" id="uploadWallpaper">
+        <button onclick="uploadFile('wallpaper')">Upload Wallpaper</button>
       </div>
     </div>
 
     <!-- Capes Tab -->
     <div id="capes" class="tab-content">
       <h2>Capes</h2>
-      <div id="capes-list" class="grid"></div>
-      <div id="cape-upload" class="upload-box" style="display: none;">
-        <input type="file" id="uploadCape" accept="image/*" onchange="uploadFile(event, 'capes')">
+      <div class="grid" id="capeGrid">
+        <!-- Example cape -->
+        <div class="item">
+          <img src="capes/example-cape.png" alt="Cape">
+          <a href="capes/example-cape.png" download>Download</a>
+        </div>
+      </div>
+      <div id="capeUpload" class="upload-section hidden">
+        <input type="file" id="uploadCape">
+        <button onclick="uploadFile('cape')">Upload Cape</button>
       </div>
     </div>
   </div>
 
-  <script>
-    // Admin toggle
-    const isAdmin = true; // set false before sharing
-
-    // Show upload boxes only for admin
-    if (isAdmin) {
-      document.getElementById("wallpaper-upload").style.display = "block";
-      document.getElementById("cape-upload").style.display = "block";
-    }
-
-    // Switch tabs
-    function openTab(evt, tabId) {
-      const contents = document.querySelectorAll(".tab-content");
-      const buttons = document.querySelectorAll(".tab-btn");
-
-      contents.forEach(c => c.classList.remove("active"));
-      buttons.forEach(b => b.classList.remove("active"));
-
-      document.getElementById(tabId).classList.add("active");
-      evt.currentTarget.classList.add("active");
-    }
-
-    // Upload file (admin only)
-    function uploadFile(event, section) {
-      const file = event.target.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const container = document.getElementById(section + "-list");
-        const item = document.createElement("div");
-        item.className = "item";
-        item.innerHTML = `
-          <img src="${e.target.result}" alt="${file.name}">
-          <a href="${e.target.result}" download="${file.name}" class="download-btn">Download</a>
-        `;
-        container.appendChild(item);
-      };
-      reader.readAsDataURL(file);
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
