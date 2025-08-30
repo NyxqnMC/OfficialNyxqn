@@ -8,23 +8,43 @@
   <h1>NyxqnMC's Art & Creations</h1>
   <p>Download and enjoy my latest creative work.</p>
 
-  <div class="gallery">
-    <!-- Mace Cape -->
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-button active" onclick="showTab('capes')">🧥 Capes</button>
+    <button class="tab-button" onclick="showTab('wallpapers')">🌌 Wallpapers</button>
+  </div>
+
+  <!-- Capes Gallery -->
+  <div class="gallery tab-content" id="capes">
     <div class="item">
       <a href="creations/mace.png" download>
         <img src="creations/mace.png" alt="Mace Cape">
       </a>
       <p>⚒️ Mace Cape</p>
     </div>
+  </div>
 
-    <!-- Night Wallpaper -->
+  <!-- Wallpapers Gallery -->
+  <div class="gallery tab-content hidden" id="wallpapers">
     <div class="item wallpaper">
       <a href="creations/night-wallpaper-with-shaders.png" download>
-        <img src="creations/night-wallpaper-with-shaders.png" 
-             alt="Night Wallpaper With Shaders">
+        <img src="creations/night-wallpaper-with-shaders.png" alt="Night Wallpaper With Shaders">
       </a>
       <p>🌌 Night Wallpaper With Shaders</p>
     </div>
   </div>
+
+  <script>
+    function showTab(tabId) {
+      // Hide all tabs
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      // Remove "active" from all buttons
+      document.querySelectorAll('.tab-button').forEach(el => el.classList.remove('active'));
+      // Show the selected tab
+      document.getElementById(tabId).classList.remove('hidden');
+      // Mark the clicked button active
+      event.target.classList.add('active');
+    }
+  </script>
 </body>
 </html>
