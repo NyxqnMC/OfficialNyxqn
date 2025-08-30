@@ -1,47 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Wallpapers & Capes</title>
-  <link rel="stylesheet" href="style.css">
+  <title>NyxqnMC Gallery</title>
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Downloads</h1>
-    <div class="tabs">
-      <button class="tab-button active" data-tab="wallpapers">Wallpapers</button>
-      <button class="tab-button" data-tab="capes">Capes</button>
+  <h1>NyxqnMC's Art & Creations</h1>
+  <p>Download and enjoy my latest creative work.</p>
+
+  <div class="gallery">
+    <!-- Mace Cape -->
+    <div class="item">
+      <a href="creations/mace.png" download>
+        <img src="creations/mace.png" alt="Mace Cape">
+      </a>
+      <p>⚒️ Mace Cape</p>
     </div>
 
-    <div id="wallpapers" class="tab-content active">
-      <h2>Wallpapers</h2>
-      <div class="preview-box">
-        <img src="wallpapers/night-wallpaper-with-shaders.png" alt="Wallpaper Preview">
-      </div>
-      <a href="wallpapers/night-wallpaper-with-shaders.png" download class="download-btn">Download Wallpaper</a>
-    </div>
-
-    <div id="capes" class="tab-content">
-      <h2>Capes</h2>
-      <div class="preview-box">
-        <img src="capes/example-cape.png" alt="Cape Preview">
-      </div>
-      <a href="capes/example-cape.png" download class="download-btn">Download Cape</a>
+    <!-- Night Wallpaper -->
+    <div class="item">
+      <a href="creations/night-wallpaper-with-shaders.png" download>
+        <img src="creations/night-wallpaper-with-shaders.png" alt="Night Wallpaper with Shaders">
+      </a>
+      <p>🌌 Night Wallpaper (Shaders)</p>
     </div>
   </div>
-
-  <script>
-    const buttons = document.querySelectorAll('.tab-button');
-    const tabs = document.querySelectorAll('.tab-content');
-
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
-        tabs.forEach(t => t.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById(btn.dataset.tab).classList.add('active');
-      });
-    });
-  </script>
 </body>
 </html>
