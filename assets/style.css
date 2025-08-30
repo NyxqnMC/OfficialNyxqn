@@ -1,52 +1,46 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
-  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  background: #0d0d0d;
+  color: #fff;
   margin: 0;
   padding: 0;
+  text-align: center;
 }
 
 .container {
-  width: 90%;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 40px 0;
-  text-align: center;
+  padding: 30px;
 }
 
 h1 {
   font-size: 2.5rem;
-  margin-bottom: 40px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #00d4ff;
-  text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+  margin-bottom: 20px;
+  color: #00ffe7;
+  text-shadow: 0 0 15px #00ffe7;
 }
 
 h2 {
-  margin-top: 40px;
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  color: #ff0080;
-  text-shadow: 0 0 10px rgba(255, 0, 128, 0.7);
+  margin: 20px 0;
+  color: #ff0099;
+  text-shadow: 0 0 10px #ff0099;
 }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+.gallery {
+  display: flex;
+  justify-content: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
-.gallery-grid img {
-  width: 100%;
+.gallery img {
+  width: 300px;
   height: auto;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
-  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0, 255, 231, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 
-.gallery-grid img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
+.gallery img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 40px rgba(255, 0, 153, 0.7);
 }
