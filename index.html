@@ -1,28 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NyxqnMC Gallery</title>
   <link rel="stylesheet" href="assets/style.css">
+  <script>
+    function showTab(tab) {
+      document.getElementById("capes").style.display = (tab === "capes") ? "flex" : "none";
+      document.getElementById("wallpapers").style.display = (tab === "wallpapers") ? "flex" : "none";
+      document.getElementById("tab-capes").classList.toggle("active", tab === "capes");
+      document.getElementById("tab-wallpapers").classList.toggle("active", tab === "wallpapers");
+    }
+    window.onload = () => showTab("capes");
+  </script>
 </head>
 <body>
   <h1>NyxqnMC's Art & Creations</h1>
-  <p>Download and enjoy my latest creative work.</p>
+  <p class="lead">Download and enjoy my latest creative work.</p>
 
-  <div class="gallery">
-    <!-- Mace Cape -->
+  <!-- Tabs -->
+  <div class="tabs">
+    <button id="tab-capes" onclick="showTab('capes')">🧥 Capes</button>
+    <button id="tab-wallpapers" onclick="showTab('wallpapers')">🖼️ Wallpapers</button>
+  </div>
+
+  <!-- Capes Gallery -->
+  <div class="gallery" id="capes">
     <div class="item">
-      <a href="creations/mace.png" download>
-        <img src="creations/mace.png" alt="Mace Cape">
+      <a href="creations/capes/mace.png" download>
+        <img class="thumb" src="creations/capes/mace.png" alt="Mace Cape" loading="lazy">
       </a>
-      <p>⚒️ Mace Cape</p>
+      <p class="label">⚒️ Mace Cape</p>
     </div>
+  </div>
 
-    <!-- Night Wallpaper -->
+  <!-- Wallpapers Gallery -->
+  <div class="gallery" id="wallpapers">
     <div class="item">
-      <a href="creations/night-wallpaper-with-shaders.png" download>
-        <img src="creations/night-wallpaper-with-shaders.png" alt="Night Wallpaper with Shaders">
+      <a href="creations/wallpapers/night-wallpaper-with-shaders.png" download>
+        <img class="thumb" src="creations/wallpapers/night-wallpaper-with-shaders.png" alt="Night Wallpaper" loading="lazy">
       </a>
-      <p>🌌 Night Wallpaper (Shaders)</p>
+      <p class="label">🌌 Night Wallpaper (Shaders)</p>
     </div>
   </div>
 </body>
