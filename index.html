@@ -9,43 +9,19 @@
 <body>
   <header>
     <h1>NyxqnMC Gallery</h1>
-    <div class="tabs">
-      <button class="tab-button active" onclick="showTab('capes')">Capes</button>
-      <button class="tab-button" onclick="showTab('wallpapers')">Wallpapers</button>
-    </div>
   </header>
 
   <main>
-    <section id="capes" class="tab-content active">
-      <h2>Capes</h2>
-      <div class="gallery">
-        <a href="creations/capes/mace.png" download>
-          <img src="creations/capes/mace.png" alt="Mace Cape">
-        </a>
+    <div class="gallery">
+      <div class="item">
+        <img src="wallpapers/night-wallpaper-with-shaders.png" alt="Wallpaper 1">
+        <a href="wallpapers/night-wallpaper-with-shaders.png" download>Download</a>
       </div>
-    </section>
-
-    <section id="wallpapers" class="tab-content">
-      <h2>Wallpapers</h2>
-      <div class="gallery">
-        <a href="creations/wallpapers/night-wallpaper-with-shaders.png" download>
-          <img src="creations/wallpapers/night-wallpaper-with-shaders.png" alt="Night Wallpaper">
-        </a>
+      <div class="item">
+        <img src="capes/mace.png" alt="Cape 1">
+        <a href="capes/mace.png" download>Download</a>
       </div>
-    </section>
+    </div>
   </main>
-
-  <script>
-    function showTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(content => {
-        content.classList.remove('active');
-      });
-      document.querySelectorAll('.tab-button').forEach(button => {
-        button.classList.remove('active');
-      });
-      document.getElementById(tabId).classList.add('active');
-      event.target.classList.add('active');
-    }
-  </script>
 </body>
 </html>
