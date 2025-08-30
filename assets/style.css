@@ -11,12 +11,39 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
+.tabs {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tab-button {
+  background: #1a1a1a;
+  color: #f0f0f0;
+  border: 2px solid #333;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.2s;
+}
+
+.tab-button:hover {
+  border-color: #8cf;
+}
+
+.tab-button.active {
+  background: #8cf;
+  color: #0d0d0d;
+  font-weight: bold;
+}
+
 .gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .item {
@@ -40,9 +67,14 @@ h1 {
 
 /* Bigger preview for wallpapers */
 .wallpaper {
-  width: 400px; /* double the size of normal items */
+  width: 400px;
 }
 
 .wallpaper img {
   border-radius: 10px;
+}
+
+/* Hide unused tab */
+.hidden {
+  display: none;
 }
