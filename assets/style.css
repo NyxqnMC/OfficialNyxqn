@@ -1,5 +1,5 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Arial, sans-serif;
   background: #0d1117;
   color: #fff;
   margin: 0;
@@ -7,7 +7,8 @@ body {
 }
 
 .container {
-  max-width: 900px;
+  width: 90%;
+  max-width: 1000px;
   margin: auto;
   padding: 20px;
 }
@@ -15,6 +16,7 @@ body {
 h1 {
   text-align: center;
   margin-bottom: 20px;
+  color: #58a6ff;
 }
 
 .tabs {
@@ -23,18 +25,19 @@ h1 {
   margin-bottom: 20px;
 }
 
-.tab-btn {
+.tab-button {
   background: #161b22;
-  color: #fff;
   border: none;
+  color: #fff;
   padding: 10px 20px;
   margin: 0 5px;
-  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s;
+  border-radius: 8px;
+  transition: 0.2s;
 }
 
-.tab-btn.active, .tab-btn:hover {
+.tab-button.active,
+.tab-button:hover {
   background: #238636;
 }
 
@@ -48,51 +51,41 @@ h1 {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 15px;
 }
 
 .item {
   background: #161b22;
-  border-radius: 12px;
-  overflow: hidden;
-  text-align: center;
   padding: 10px;
-  transition: transform 0.2s;
-}
-
-.item:hover {
-  transform: scale(1.05);
+  border-radius: 10px;
+  text-align: center;
 }
 
 .item img {
   max-width: 100%;
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 
-.download-btn {
+.item a {
   display: inline-block;
-  margin-top: 8px;
   padding: 6px 12px;
   background: #238636;
-  color: #fff;
-  border-radius: 6px;
+  color: white;
   text-decoration: none;
-  font-size: 14px;
+  border-radius: 5px;
+  transition: 0.2s;
 }
 
-.download-btn:hover {
+.item a:hover {
   background: #2ea043;
 }
 
-.upload-box {
+.upload-section {
   margin-top: 20px;
-  text-align: center;
 }
 
-.upload-box input {
-  background: #238636;
-  padding: 8px;
-  border-radius: 6px;
-  cursor: pointer;
+.hidden {
+  display: none;
 }
