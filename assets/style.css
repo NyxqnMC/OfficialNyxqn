@@ -1,23 +1,50 @@
+:root {
+  --card: #1a1a1a;
+  --ink: #f0f0f0;
+  --muted: #bdbdbd;
+  --edge: #333;
+  --accent: #89c5ff;
+}
+
+* { box-sizing: border-box; }
+
 body {
-  background-color: #0d0d0d;
-  color: #f0f0f0;
-  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  background: #0d0d0d;
+  color: var(--ink);
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
   text-align: center;
-  padding: 2rem;
+  padding: 2rem 1rem 3rem;
 }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+h1 { font-size: 2.2rem; margin: 0 0 .4rem; }
+.lead { color: var(--muted); margin: 0; }
+
+/* Tabs */
+.tabs {
+  margin-top: 1.5rem;
+}
+.tabs button {
+  background: var(--card);
+  border: 2px solid var(--edge);
+  color: var(--ink);
+  padding: 0.6rem 1.2rem;
+  margin: 0 0.3rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.tabs button:hover {
+  border-color: var(--accent);
+}
+.tabs button.active {
+  border-color: var(--accent);
+  background: #222;
 }
 
-p {
-  font-size: 1rem;
-  color: #ccc;
-}
-
+/* Gallery */
 .gallery {
-  display: flex;
+  display: none; /* hidden until tab selected */
   flex-wrap: wrap;
   justify-content: center;
   gap: 1.5rem;
@@ -25,26 +52,32 @@ p {
 }
 
 .item {
-  width: 200px;
-  border: 2px solid #333;
+  width: 210px;
+  border: 2px solid var(--edge);
   padding: 1rem;
-  border-radius: 12px;
-  background: #1a1a1a;
-  transition: 0.2s;
+  border-radius: 14px;
+  background: var(--card);
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
 }
 
 .item:hover {
-  transform: scale(1.05);
-  border-color: #8cf;
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 20px rgba(0,0,0,.35);
 }
 
-.item img {
+.thumb {
   width: 100%;
-  border-radius: 8px;
+  height: 210px;
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+  background: #0f0f10;
+  border: 1px solid #222;
 }
 
-.item p {
-  margin-top: 0.5rem;
+.label {
+  margin-top: .6rem;
   font-size: 1rem;
-  color: #f0f0f0;
+  color: var(--ink);
 }
