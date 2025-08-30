@@ -4,136 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wallpapers & Capes</title>
-  <style>
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: #0f0f10;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      height: 100vh;
-    }
-
-    .container {
-      width: 80%;
-      max-width: 900px;
-      margin-top: 40px;
-      background: #1a1a1d;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 4px 25px rgba(0,0,0,0.5);
-    }
-
-    .tabs {
-      display: flex;
-      gap: 10px;
-      border-bottom: 2px solid #2c2c2f;
-      margin-bottom: 20px;
-    }
-
-    .tab {
-      padding: 12px 20px;
-      cursor: pointer;
-      background: #2a2a2d;
-      border-radius: 10px 10px 0 0;
-      transition: background 0.3s;
-    }
-
-    .tab:hover {
-      background: #3a3a3d;
-    }
-
-    .tab.active {
-      background: #4c4cff;
-      font-weight: bold;
-    }
-
-    .tab-content {
-      display: none;
-      animation: fadeIn 0.4s ease;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-
-    .preview-box {
-      background: #101014;
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .preview-box img {
-      max-width: 100%;
-      max-height: 400px;
-      border-radius: 12px;
-      margin-bottom: 15px;
-    }
-
-    input[type="file"] {
-      background: #4c4cff;
-      color: #fff;
-      padding: 10px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    input[type="file"]:hover {
-      background: #6a6aff;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
+    <h1>Downloads</h1>
     <div class="tabs">
-      <div class="tab active" onclick="openTab('wallpapers')">Wallpapers</div>
-      <div class="tab" onclick="openTab('capes')">Capes</div>
+      <button class="tab-btn active" onclick="openTab(event, 'wallpapers')">Wallpapers</button>
+      <button class="tab-btn" onclick="openTab(event, 'capes')">Capes</button>
     </div>
 
+    <!-- Wallpapers Tab -->
     <div id="wallpapers" class="tab-content active">
-      <div class="preview-box">
-        <img id="wallpaperPreview" src="night-wallpaper-with-shaders.png" alt="Wallpaper Preview">
-        <br>
-        <input type="file" accept="image/*" onchange="previewWallpaper(event)">
+      <h2>Wallpapers</h2>
+      <div id="wallpapers-list" class="grid"></div>
+      <div id="wallpaper-upload" class="upload-box" style="display: none;">
+        <input type="file" id="uploadWallpaper" accept="image/*" onchange="uploadFile(event, 'wallpapers')">
       </div>
     </div>
 
+    <!-- Capes Tab -->
     <div id="capes" class="tab-content">
-      <div class="preview-box">
-        <p>No cape selected yet.</p>
-        <input type="file" accept="image/*">
+      <h2>Capes</h2>
+      <div id="capes-list" class="grid"></div>
+      <div id="cape-upload" class="upload-box" style="display: none;">
+        <input type="file" id="uploadCape" accept="image/*" onchange="uploadFile(event, 'capes')">
       </div>
     </div>
   </div>
 
   <script>
-    function openTab(tabId) {
-      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-      event.target.classList.add('active');
+    // Admin toggle
+    const isAdmin = true; // set false before sharing
+
+    // Show upload boxes only for admin
+    if (isAdmin) {
+      document.getElementById("wallpaper-upload").style.display = "block";
+      document.getElementById("cape-upload").style.display = "block";
     }
 
-    function previewWallpaper(event) {
+    // Switch tabs
+    function openTab(evt, tabId) {
+      const contents = document.querySelectorAll(".tab-content");
+      const buttons = document.querySelectorAll(".tab-btn");
+
+      contents.forEach(c => c.classList.remove("active"));
+      buttons.forEach(b => b.classList.remove("active"));
+
+      document.getElementById(tabId).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+
+    // Upload file (admin only)
+    function uploadFile(event, section) {
       const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          document.getElementById('wallpaperPreview').src = e.target.result;
-        }
-        reader.readAsDataURL(file);
-      }
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const container = document.getElementById(section + "-list");
+        const item = document.createElement("div");
+        item.className = "item";
+        item.innerHTML = `
+          <img src="${e.target.result}" alt="${file.name}">
+          <a href="${e.target.result}" download="${file.name}" class="download-btn">Download</a>
+        `;
+        container.appendChild(item);
+      };
+      reader.readAsDataURL(file);
     }
   </script>
 </body>
