@@ -2,52 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wallpapers & Capes</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1>Downloads</h1>
-
     <div class="tabs">
-      <button class="tab-button active" onclick="openTab('wallpapers')">Wallpapers</button>
-      <button class="tab-button" onclick="openTab('capes')">Capes</button>
+      <button class="tab-button active" data-tab="wallpapers">Wallpapers</button>
+      <button class="tab-button" data-tab="capes">Capes</button>
     </div>
 
-    <!-- Wallpapers Tab -->
     <div id="wallpapers" class="tab-content active">
       <h2>Wallpapers</h2>
-      <div class="grid" id="wallpaperGrid">
-        <!-- Example wallpaper -->
-        <div class="item">
-          <img src="wallpapers/night-wallpaper-with-shaders.png" alt="Wallpaper">
-          <a href="wallpapers/night-wallpaper-with-shaders.png" download>Download</a>
-        </div>
+      <div class="preview-box">
+        <img src="wallpapers/night-wallpaper-with-shaders.png" alt="Wallpaper Preview">
       </div>
-      <div id="wallpaperUpload" class="upload-section hidden">
-        <input type="file" id="uploadWallpaper">
-        <button onclick="uploadFile('wallpaper')">Upload Wallpaper</button>
-      </div>
+      <a href="wallpapers/night-wallpaper-with-shaders.png" download class="download-btn">Download Wallpaper</a>
     </div>
 
-    <!-- Capes Tab -->
     <div id="capes" class="tab-content">
       <h2>Capes</h2>
-      <div class="grid" id="capeGrid">
-        <!-- Example cape -->
-        <div class="item">
-          <img src="capes/example-cape.png" alt="Cape">
-          <a href="capes/example-cape.png" download>Download</a>
-        </div>
+      <div class="preview-box">
+        <img src="capes/example-cape.png" alt="Cape Preview">
       </div>
-      <div id="capeUpload" class="upload-section hidden">
-        <input type="file" id="uploadCape">
-        <button onclick="uploadFile('cape')">Upload Cape</button>
-      </div>
+      <a href="capes/example-cape.png" download class="download-btn">Download Cape</a>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    const buttons = document.querySelectorAll('.tab-button');
+    const tabs = document.querySelectorAll('.tab-content');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        tabs.forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
